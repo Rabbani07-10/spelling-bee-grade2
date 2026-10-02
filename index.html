@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spelling Bee 2026–2027 | Grade II - Suffah Intellectual Schools</title>
   
-  <!-- Modern Geometric Font (Lufga alternative) -->
+  <!-- Fonts: Olde English for School Title + Modern fonts for clean reading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -95,32 +95,33 @@
       border-radius: 50%;
     }
 
-    /* Fallback if logo.png is not uploaded yet */
     .logo-fallback {
       display: none;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
-      font-size: 20px;
+      font-family: 'UnifrakturMaguntia', 'Old English Text MT', serif;
+      font-weight: 700;
+      font-size: 22px;
       color: var(--navy);
-      letter-spacing: -1px;
     }
 
+    /* Olde English Styled Header Title */
     .brand-meta h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.2px;
+      font-family: 'UnifrakturMaguntia', 'Old English Text MT', 'Engravers Old English BT', cursive, serif;
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
       color: #ffffff;
       line-height: 1.2;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
     }
 
     .brand-meta .tagline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.85rem;
       color: var(--teal);
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-top: 2px;
+      margin-top: 4px;
     }
 
     .competition-pill {
@@ -370,7 +371,6 @@
       color: #2b1f00;
     }
 
-    /* No search results banner */
     .no-results {
       grid-column: 1 / -1;
       text-align: center;
@@ -428,7 +428,7 @@
         gap: 10px;
       }
       .brand-meta h1 {
-        font-size: 1.25rem;
+        font-size: 1.55rem;
       }
       .logo-container {
         width: 58px;
@@ -455,8 +455,7 @@
     <div class="header-container">
       <a href="https://www.suffah.edu.pk/" target="_blank" rel="noopener noreferrer" class="brand-group" title="Visit Suffah Intellectual School Official Website">
         <div class="logo-container">
-          <!-- Looks for logo.png in the repository root -->
-          <img src="https://www.suffah.edu.pk/images/logo-new.png" alt="Suffah Intellectual School Logo" id="school-logo" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='block';" />
+          <img src="logo.png" alt="Suffah Intellectual School Logo" id="school-logo" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='block';" />
           <div id="logo-fallback" class="logo-fallback">SIS</div>
         </div>
         <div class="brand-meta">
@@ -508,7 +507,7 @@
   </footer>
 
   <script>
-    // All 95 Grade 2 Spelling Bee words directly from the competition sheet
+    // All 95 Grade 2 Spelling Bee words
     const spellingWords = [
       "shake", "flight", "shell", "plain", "brain",
       "spring", "thrill", "stump", "bench", "kitchen",
@@ -539,10 +538,10 @@
         alert("Text-to-speech is not supported on this browser.");
         return;
       }
-      window.speechSynthesis.cancel(); // Stop any pending voice
+      window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(word);
       utterance.lang = 'en-US';
-      utterance.rate = rate; // Normal (1.0) or Slow (0.7)
+      utterance.rate = rate;
       utterance.pitch = 1.0;
       window.speechSynthesis.speak(utterance);
     }
@@ -585,7 +584,6 @@
           </div>
         `;
 
-        // Click word title to reveal or speak
         const wordTitleEl = card.querySelector('.word-title');
         wordTitleEl.addEventListener('click', () => {
           if (isPracticeMode && !wordTitleEl.classList.contains('revealed')) {
@@ -615,7 +613,7 @@
       renderWords(e.target.value);
     });
 
-    // Toggle Practice Mode (Hide / Show)
+    // Toggle Practice Mode
     practiceToggleBtn.addEventListener('click', () => {
       isPracticeMode = !isPracticeMode;
       practiceToggleBtn.classList.toggle('active', isPracticeMode);
