@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spelling Bee 2026–2027 | Grade II - Suffah Intellectual Schools</title>
   
-  <!-- Fonts: Olde English for School Title + Modern fonts for clean reading -->
+  <!-- Authentic Old English Text Font + Modern UI fonts -->
+  <link href="https://fonts.cdnfonts.com/css/old-english-text-mt" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -75,8 +76,8 @@
     }
 
     .logo-container {
-      width: 68px;
-      height: 68px;
+      width: 72px;
+      height: 72px;
       background: #ffffff;
       border-radius: 50%;
       padding: 4px;
@@ -86,6 +87,7 @@
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
       border: 3px solid var(--gold);
       flex-shrink: 0;
+      overflow: hidden;
     }
 
     .logo-container img {
@@ -93,25 +95,18 @@
       height: 100%;
       object-fit: contain;
       border-radius: 50%;
+      display: block;
     }
 
-    .logo-fallback {
-      display: none;
-      font-family: 'UnifrakturMaguntia', 'Old English Text MT', serif;
-      font-weight: 700;
-      font-size: 22px;
-      color: var(--navy);
-    }
-
-    /* Olde English Styled Header Title */
+    /* True Old English Title Styling */
     .brand-meta h1 {
-      font-family: 'UnifrakturMaguntia', 'Old English Text MT', 'Engravers Old English BT', cursive, serif;
-      font-size: 2rem;
-      font-weight: 400;
+      font-family: 'Old English Text MT', 'Engravers Old English BT', 'Grenze Gotisch', cursive, serif;
+      font-size: 2.2rem;
+      font-weight: normal;
       letter-spacing: 0.5px;
       color: #ffffff;
       line-height: 1.2;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
     }
 
     .brand-meta .tagline {
@@ -428,11 +423,11 @@
         gap: 10px;
       }
       .brand-meta h1 {
-        font-size: 1.55rem;
+        font-size: 1.65rem;
       }
       .logo-container {
-        width: 58px;
-        height: 58px;
+        width: 60px;
+        height: 60px;
       }
       .words-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -455,8 +450,8 @@
     <div class="header-container">
       <a href="https://www.suffah.edu.pk/" target="_blank" rel="noopener noreferrer" class="brand-group" title="Visit Suffah Intellectual School Official Website">
         <div class="logo-container">
-          <img src="logo.png" alt="Suffah Intellectual School Logo" id="school-logo" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='block';" />
-          <div id="logo-fallback" class="logo-fallback">SIS</div>
+          <!-- Put your image URL in src below -->
+          <img src="https://www.suffah.edu.pk/images/logo-new.png" alt="Suffah Intellectual School Logo" id="school-logo" />
         </div>
         <div class="brand-meta">
           <h1>Suffah Intellectual School</h1>
