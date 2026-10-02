@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spelling Bee 2026-2027 | Grade II - Suffah Intellectual School</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandNavy: '#005076',   /* Official Brand Primary */
+            brandMint: '#3cb5a1',   /* Official Brand Secondary */
+            brandSlate: '#548694',  /* Official Brand Accent */
+            brandGold: '#fcc043',   /* Official Brand Golden Yellow */
+            brandGoldDark: '#d99e23',
+            brandDarkBg: '#003954'
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @keyframes pulseSoft {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .animate-pulse-soft {
+      animation: pulseSoft 2.5s infinite ease-in-out;
+    }
+    .text-shadow-sm {
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    }
+    @media print {
+      .no-print { display: none !important; }
+      .print-only { display: block !important; }
+      body { background: white !important; color: black !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col selection:bg-brandMint selection:text-white">
+
+  <header class="bg-gradient-to-r from-brandNavy via-[#003d5b] to-brandNavy text-white shadow-xl border-b-4 border-brandGold relative overflow-hidden">
+    <!-- Subtle Background Pattern Accent -->
+    <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-brandMint/10 blur-2xl pointer-events-none"></div>
+    <div class="absolute -left-16 -bottom-16 w-64 h-64 rounded-full bg-brandGold/10 blur-2xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-4 py-6 md:py-8 flex flex-col items-center text-center relative z-10">
+      
+      <!-- School Logo & Laurel Crest SVG -->
+      <div class="relative mb-3 flex items-center justify-center">
+        <div class="w-20 h-20 md:w-24 md:h-24 bg-white p-2 rounded-full shadow-lg border-2 border-brandGold flex items-center justify-center">
+          <svg viewBox="0 0 100 100" class="w-full h-full text-brandNavy" fill="currentColor">
+            <!-- Laurel Wreath -->
+            <path d="M50 8C30 8 16 24 16 45c0 14 7 26 18 33l2-4c-9-6-15-17-15-29 0-19 12-33 29-33 17 0 29 14 29 33 0 12-6 23-15 29l2 4c11-7 18-19 18-33 0-21-14-37-34-37z" fill="#fcc043"/>
+            <!-- Center Ring -->
+            <circle cx="50" cy="46" r="30" fill="#005076" stroke="#3cb5a1" stroke-width="3"/>
+            <circle cx="50" cy="46" r="23" fill="#ffffff" />
+            <!-- SIS Monogram -->
+            <text x="50" y="53" font-family="'Playfair Display', serif" font-weight="900" font-size="22" fill="#005076" text-anchor="middle">SIS</text>
+            <!-- Banner Ribbon -->
+            <path d="M15 84 L50 80 L85 84 L78 92 L50 88 L22 92 Z" fill="#fcc043" stroke="#d99e23" stroke-width="1"/>
+            <text x="50" y="87" font-size="5" font-weight="bold" fill="#005076" text-anchor="middle" letter-spacing="0.5">SUFFAH</text>
+          </svg>
+        </div>
+      </div>
+
+      <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white mb-1 drop-shadow-sm">
+        Suffah Intellectual School
+      </h1>
+      
+      <div class="inline-flex items-center gap-2 bg-brandGold text-brandNavy px-4 py-1 rounded-full font-bold text-xs md:text-sm tracking-wider uppercase shadow-md my-1">
+        <span>Learn</span>
+        <span class="text-brandNavy/50">•</span>
+        <span>Implement</span>
+        <span class="text-brandNavy/50">•</span>
+        <span>Succeed</span>
+      </div>
+
+      <p class="text-brandMint font-medium text-sm md:text-base mt-2 max-w-xl">
+        Official Word Bank • Spelling Bee Competition 2026–2027
+      </p>
+      
+      <div class="mt-2 inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 backdrop-blur-sm rounded-lg text-xs text-slate-200 border border-white/15">
+        <span class="w-2 h-2 rounded-full bg-brandMint animate-ping"></span>
+        <span>Grade II (95 Words) • Tap any word to hear pronunciation</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6 md:py-8">
+    
+    <!-- Navigation Tabs -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-6 no-print">
+      <button onclick="switchTab('list')" id="tab-list" class="tab-btn px-4 py-2.5 rounded-xl font-bold text-sm shadow-sm transition-all flex items-center gap-2 bg-brandNavy text-white shadow-brandNavy/20">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+        <span>Word Bank (95)</span>
+      </button>
+      
+      <button onclick="switchTab('flashcard')" id="tab-flashcard" class="tab-btn px-4 py-2.5 rounded-xl font-semibold text-sm transition-all flex items-center gap-2 bg-white text-slate-700 hover:bg-slate-100 border border-slate-200">
+        <svg class="w-4 h-4 text-brandMint" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+        <span>Flashcard Practice</span>
+      </button>
+      
+      <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn px-4 py-2.5 rounded-xl font-semibold text-sm transition-all flex items-center gap-2 bg-white text-slate-700 hover:bg-slate-100 border border-slate-200">
+        <svg class="w-4 h-4 text-brandGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>Spelling Quiz Challenge</span>
+      </button>
+
+      <button onclick="window.print()" class="px-4 py-2.5 rounded-xl font-semibold text-sm transition-all flex items-center gap-2 bg-white text-slate-700 hover:bg-slate-100 border border-slate-200">
+        <svg class="w-4 h-4 text-brandSlate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+        <span>Print Sheet</span>
+      </button>
+    </div>
+
+    <!-- VIEW 1: WORD BANK LIST -->
+    <section id="view-list" class="space-y-6">
+      
+      <!-- Search, Star filter and Speech Controls -->
+      <div class="bg-white p-4 md:p-5 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col md:flex-row items-center justify-between gap-4 no-print">
+        
+        <!-- Live Search Box -->
+        <div class="relative w-full md:w-72">
+          <svg class="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search word (e.g., flight, rocket)..." 
+            oninput="handleSearch()"
+            class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brandMint focus:border-transparent text-sm"
+          >
+          <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-xs bg-slate-200 text-slate-600 rounded-full w-5 h-5 items-center justify-center font-bold">×</button>
+        </div>
+
+        <!-- Filter Chips & Practice toggles -->
+        <div class="flex flex-wrap items-center justify-center gap-2 w-full md:w-auto">
+          <button onclick="setFilter('all')" id="filter-all" class="filter-btn text-xs font-bold px-3 py-1.5 rounded-lg bg-brandNavy text-white transition">
+            All (95)
+          </button>
+          
+          <button onclick="setFilter('starred')" id="filter-starred" class="filter-btn text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center gap-1">
+            <span>★ Starred</span>
+            <span id="starCounter" class="bg-brandGold text-brandNavy font-bold rounded-full px-1.5 py-0.2 text-[10px]">0</span>
+          </button>
+
+          <!-- Voice Speed Switch -->
+          <button onclick="toggleVoiceSpeed()" id="speedToggleBtn" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center gap-1">
+            <span>🔊 Speed:</span>
+            <span id="speedLabel" class="font-bold text-brandNavy">Normal (0.9x)</span>
+          </button>
+
+          <!-- Practice Mode Mask Toggle -->
+          <button onclick="toggleMaskSpellings()" id="maskToggleBtn" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center gap-1">
+            <span id="maskIcon">👁️</span>
+            <span id="maskLabel">Hide Spellings</span>
+          </button>
+        </div>
+
+      </div>
+
+      <div id="wordsStatsBar" class="text-xs text-slate-500 font-medium px-2 flex justify-between items-center no-print">
+        <span id="showingCountText">Showing all 95 words</span>
+        <span class="text-brandNavy font-semibold">Tip: Click on any card to hear pronunciation</span>
+      </div>
+
+      <!-- Word Cards Grid -->
+      <div id="wordGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+
+      <!-- Empty Results State -->
+      <div id="emptySearchNotice" class="hidden text-center py-12 bg-white rounded-2xl border border-dashed border-slate-300">
+        <div class="text-3xl mb-2">🔍</div>
+        <h3 class="font-bold text-slate-700 text-base">No words matched your search</h3>
+        <p class="text-xs text-slate-500 mt-1">Try another spelling or clear your filter</p>
+        <button onclick="clearSearch()" class="mt-3 text-xs font-bold text-brandNavy bg-brandGold px-4 py-2 rounded-xl">Clear Search</button>
+      </div>
+
+    </section>
+
+    <!-- VIEW 2: FLASHCARD PRACTICE MODE -->
+    <section id="view-flashcard" class="hidden max-w-xl mx-auto space-y-6">
+      <div class="bg-white rounded-3xl shadow-lg border border-slate-200/80 p-6 md:p-8 text-center relative overflow-hidden">
+        
+        <!-- Header Info in Flashcard -->
+        <div class="flex items-center justify-between text-xs text-slate-500 mb-6 font-semibold">
+          <span id="flashcardIndex">Word 1 of 95</span>
+          <button onclick="toggleStarCurrentFlashcard()" id="flashcardStarBtn" class="text-lg hover:scale-125 transition text-slate-300">
+            ★
+          </button>
+        </div>
+
+        <!-- The Central Card Face -->
+        <div class="py-8 min-h-[180px] flex flex-col items-center justify-center">
+          <div id="flashcardDisplay" class="text-3xl md:text-5xl font-extrabold text-brandNavy tracking-wide transition-all">
+            shake
+          </div>
+          <div id="flashcardHint" class="hidden mt-3 text-sm text-slate-400 italic">
+            Listen and spell it out loud!
+          </div>
+        </div>
+
+        <!-- Speaker Button Large -->
+        <div class="mb-6">
+          <button onclick="playFlashcardAudio()" class="inline-flex items-center gap-2 bg-brandMint text-white font-bold px-6 py-3 rounded-2xl shadow-md hover:bg-[#349e8d] active:scale-95 transition">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.76l-4.14-3.313H2a1 1 0 01-1-1V7.553a1 1 0 011-1h2.243l4.14-3.313a1 1 0 011-.164zM14 6a1 1 0 011 1 6 6 0 010 6 1 1 0 11-1.414-1.414 4 4 0 000-3.172A1 1 0 0114 6z"/></svg>
+            <span>Pronounce Word</span>
+          </button>
+        </div>
+
+        <!-- Reveal / Hide Spelling Toggle for parent/student testing -->
+        <div class="mb-6">
+          <button onclick="toggleFlashcardReveal()" id="flashcardRevealBtn" class="text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-xl transition">
+            🙈 Hide Word (Test Yourself)
+          </button>
+        </div>
+
+        <!-- Navigation Next/Prev Controls -->
+        <div class="flex items-center justify-between gap-3 pt-4 border-t border-slate-100">
+          <button onclick="prevFlashcard()" class="flex-1 py-3 px-4 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm hover:bg-slate-50 transition active:scale-95">
+            ← Previous
+          </button>
+          <button onclick="shuffleFlashcards()" class="px-3 py-3 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-50 transition" title="Random Shuffle">
+            🔀
+          </button>
+          <button onclick="nextFlashcard()" class="flex-1 py-3 px-4 rounded-xl bg-brandNavy text-white font-bold text-sm hover:bg-brandDarkBg transition shadow-md active:scale-95">
+            Next →
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIEW 3: SPELLING BEE QUIZ CHALLENGE -->
+    <section id="view-quiz" class="hidden max-w-xl mx-auto space-y-6">
+      
+      <!-- Quiz Welcome / Setup Screen -->
+      <div id="quizIntroCard" class="bg-white rounded-3xl shadow-lg border border-slate-200/80 p-6 md:p-8 text-center space-y-4">
+        <div class="w-16 h-16 bg-brandGold/20 text-brandNavy rounded-2xl flex items-center justify-center text-3xl mx-auto">
+          🏆
+        </div>
+        <h2 class="text-2xl font-bold text-brandNavy">Ready for the Spelling Bee?</h2>
+        <p class="text-sm text-slate-600 max-w-sm mx-auto">
+          Listen to the spoken word and type the correct spelling. Test your Grade II preparation!
+        </p>
+
+        <div class="grid grid-cols-3 gap-2 pt-2 max-w-xs mx-auto">
+          <button onclick="startQuiz(10)" class="p-3 rounded-xl border-2 border-brandMint bg-mint/10 font-bold text-sm text-slate-700 hover:bg-brandMint hover:text-white transition">
+            10 Words
+          </button>
+          <button onclick="startQuiz(20)" class="p-3 rounded-xl border-2 border-brandNavy font-bold text-sm text-slate-700 hover:bg-brandNavy hover:text-white transition">
+            20 Words
+          </button>
+          <button onclick="startQuiz('all')" class="p-3 rounded-xl border-2 border-brandGold font-bold text-sm text-slate-700 hover:bg-brandGold hover:text-brandNavy transition">
+            All 95
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Quiz Card -->
+      <div id="quizActiveCard" class="hidden bg-white rounded-3xl shadow-lg border border-slate-200/80 p-6 md:p-8 space-y-6 text-center">
+        
+        <!-- Progress bar and score -->
+        <div class="flex items-center justify-between text-xs font-bold text-slate-500">
+          <span id="quizProgressText">Word 1 of 10</span>
+          <span class="text-brandMint font-extrabold text-sm" id="quizScoreText">Score: 0</span>
+        </div>
+        
+        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+          <div id="quizProgressBar" class="bg-brandMint h-full w-0 transition-all duration-300"></div>
+        </div>
+
+        <!-- Speaker button prompt -->
+        <div class="py-4">
+          <button onclick="playQuizWordAudio()" class="w-24 h-24 rounded-full bg-gradient-to-tr from-brandNavy to-brandSlate text-white shadow-lg flex items-center justify-center mx-auto hover:scale-105 active:scale-95 transition">
+            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.76l-4.14-3.313H2a1 1 0 01-1-1V7.553a1 1 0 011-1h2.243l4.14-3.313a1 1 0 011-.164zM14 6a1 1 0 011 1 6 6 0 010 6 1 1 0 11-1.414-1.414 4 4 0 000-3.172A1 1 0 0114 6z"/></svg>
+          </button>
+          <p class="text-xs text-slate-500 mt-2 font-medium">Click icon to hear word again</p>
+        </div>
+
+        <!-- Input Box -->
+        <div class="space-y-3">
+          <input 
+            type="text" 
+            id="quizInput" 
+            autocomplete="off" 
+            autocorrect="off" 
+            autocapitalize="none" 
+            spellcheck="false" 
+            placeholder="Type spelling here..." 
+            onkeydown="if(event.key === 'Enter') submitQuizAnswer()"
+            class="w-full text-center text-xl md:text-2xl font-bold py-3 px-4 rounded-xl border-2 border-slate-300 focus:outline-none focus:border-brandNavy focus:ring-4 focus:ring-brandNavy/10"
+          >
+          
+          <div class="flex items-center justify-center gap-2">
+            <button onclick="giveQuizHint()" id="hintBtn" class="text-xs text-slate-500 hover:text-brandNavy underline font-medium">
+              💡 Need a hint? (Show 1st letter)
+            </button>
+          </div>
+          <div id="quizHintDisplay" class="hidden text-xs font-semibold text-brandSlate"></div>
+        </div>
+
+        <!-- Submit Button -->
+        <button onclick="submitQuizAnswer()" id="quizSubmitBtn" class="w-full py-3.5 bg-brandNavy text-white font-bold text-base rounded-xl shadow-md hover:bg-brandDarkBg transition active:scale-98">
+          Check Spelling
+        </button>
+
+        <!-- Feedback message area -->
+        <div id="quizFeedback" class="hidden rounded-xl p-3 text-sm font-bold"></div>
+
+      </div>
+
+      <!-- Quiz Summary / Finished Modal -->
+      <div id="quizFinishedCard" class="hidden bg-white rounded-3xl shadow-lg border border-slate-200/80 p-8 text-center space-y-4">
+        <div class="text-5xl animate-bounce">🎖️</div>
+        <h3 class="text-2xl font-black text-brandNavy">Great Effort!</h3>
+        <p class="text-slate-600 text-sm">You completed the Spelling Bee Practice Quiz.</p>
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 max-w-xs mx-auto">
+          <div class="text-xs uppercase text-slate-400 font-bold">Final Score</div>
+          <div id="finalScoreDisplay" class="text-3xl font-black text-brandNavy my-1">8 / 10</div>
+          <div id="feedbackCheer" class="text-xs font-bold text-brandMint">Outstanding Performance!</div>
+        </div>
+        <div class="flex gap-2 justify-center pt-2">
+          <button onclick="startQuiz(10)" class="px-5 py-2.5 rounded-xl bg-brandNavy text-white font-bold text-sm shadow">
+            Try Again
+          </button>
+          <button onclick="switchTab('list')" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm">
+            Back to Words
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="bg-brandNavy text-white border-t border-white/10 mt-12 py-8 px-4 text-xs">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      
+      <!-- Brand & Motto -->
+      <div class="space-y-1">
+        <div class="font-extrabold text-base tracking-wide text-brandGold flex items-center justify-center md:justify-start gap-2">
+          <span>Suffah Intellectual Schools</span>
+        </div>
+        <p class="text-slate-300 text-xs">Learn | Implement | Succeed</p>
+        <p class="text-slate-400 text-[11px]">Ch. Shakoor Ahmed Street, New Chakra, Rawalpindi</p>
+      </div>
+
+      <!-- Direct Contacts from Brand Identity -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 text-slate-300">
+        <a href="tel:03365366237" class="hover:text-brandGold transition flex items-center gap-1.5">
+          <span>📞</span> <span>0336 5366237</span>
+        </a>
+        <a href="mailto:info@suffahschools.com" class="hover:text-brandGold transition flex items-center gap-1.5">
+          <span>✉️</span> <span>info@suffahschools.com</span>
+        </a>
+        <a href="https://www.suffahintellectualschool.com" target="_blank" rel="noopener" class="hover:text-brandGold transition flex items-center gap-1.5">
+          <span>🌐</span> <span>suffahintellectualschool.com</span>
+        </a>
+      </div>
+
+      <!-- Year -->
+      <div class="text-slate-400 text-[11px]">
+        Spelling Bee Competition 2026–2027 • Grade II
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Exact 95 Words list from the Grade II Spelling Bee Competition Sheet
+    const WORDS_DATA = [
+      "shake", "flight", "shell", "plain", "brain",
+      "spring", "thrill", "stump", "bench", "kitchen",
+      "butcher", "wheel", "feather", "whiskers", "moth",
+      "chicken", "queue", "weather", "blanket", "glove",
+      "twin", "stripe", "splash", "cabbage", "pepper",
+      "lettuce", "squash", "ginger", "France", "Egypt",
+      "Neptune", "coast", "ocean", "stream", "desert",
+      "border", "empty", "listen", "climb", "proud",
+      "compass", "smooth", "polite", "scared", "lonely",
+      "heart", "clue", "while", "behind", "around",
+      "muscle", "tonight", "excited", "bright", "share",
+      "liquid", "octopus", "penguin", "captain", "treasure",
+      "magnet", "float", "rough", "bean", "daisy",
+      "thunder", "tulip", "pebble", "harvest", "bucket",
+      "nation", "drawer", "roaster", "spoon", "tongs",
+      "meadow", "grater", "teapot", "cookie", "desert",
+      "village", "dessert", "sugar", "pour", "toaster",
+      "bridge", "cabinet", "rocket", "helmet", "shimmer",
+      "atlas", "sparkle", "gravity", "camera", "intellectual"
+    ];
+
+    // State
+    let currentFilter = 'all'; // 'all' or 'starred'
+    let starredWords = new Set();
+    let speechRate = 0.85; // slightly slower for Grade 2 clarity
+    let hideSpellings = false;
+    let searchQuery = '';
+    
+    // Flashcard State
+    let flashcardList = [...WORDS_DATA];
+    let flashcardCurrentIndex = 0;
+    let flashcardIsRevealed = true;
+
+    // Quiz State
+    let quizWordPool = [];
+    let quizCurrentIdx = 0;
+    let quizScore = 0;
+    let currentQuizWord = '';
+
+    // Load saved favorites from localStorage
+    try {
+      const saved = localStorage.getItem('suffah_starred_words');
+      if (saved) {
+        starredWords = new Set(JSON.parse(saved));
+      }
+    } catch (e) {
+      console.log('Local storage unavailable');
+    }
+
+    // Web Speech API Voice synthesis
+    function speak(text) {
+      if (!('speechSynthesis' in window)) {
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = speechRate;
+      utterance.pitch = 1.05;
+      
+      // Attempt to pick a smooth English voice
+      const voices = window.speechSynthesis.getVoices();
+      const preferred = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('UK') || v.name.includes('US')));
+      if (preferred) {
+        utterance.voice = preferred;
+      }
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // Audio chime sound effects (Web Audio API - self-contained)
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep(success) {
+      if (!audioCtx) return;
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      
+      const now = audioCtx.currentTime;
+      if (success) {
+        // Cheerful upward chime
+        osc.frequency.setValueAtTime(523.25, now); // C5
+        osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.15); // G5
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+        osc.start(now);
+        osc.stop(now + 0.35);
+      } else {
+        // Soft error tone
+        osc.frequency.setValueAtTime(260, now);
+        osc.frequency.exponentialRampToValueAtTime(180, now + 0.2);
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+        osc.start(now);
+        osc.stop(now + 0.3);
+      }
+    }
+
+    function renderWordGrid() {
+      const container = document.getElementById('wordGrid');
+      const emptyNotice = document.getElementById('emptySearchNotice');
+      container.innerHTML = '';
+
+      let filtered = WORDS_DATA.map((word, idx) => ({ word, index: idx + 1 }));
+
+      // Apply Search Filter
+      if (searchQuery.trim() !== '') {
+        filtered = filtered.filter(item => item.word.toLowerCase().includes(searchQuery.toLowerCase()));
+      }
+
+      // Apply Starred Filter
+      if (currentFilter === 'starred') {
+        filtered = filtered.filter(item => starredWords.has(item.word.toLowerCase()));
+      }
+
+      // Update counters
+      document.getElementById('showingCountText').innerText = `Showing ${filtered.length} of 95 words`;
+      document.getElementById('starCounter').innerText = starredWords.size;
+
+      if (filtered.length === 0) {
+        emptyNotice.classList.remove('hidden');
+        return;
+      } else {
+        emptyNotice.classList.add('hidden');
+      }
+
+      // Render cards
+      filtered.forEach(({ word, index }) => {
+        const isStarred = starredWords.has(word.toLowerCase());
+        const card = document.createElement('div');
+        card.className = "group bg-white rounded-2xl p-3.5 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-brandMint transition-all duration-200 flex flex-col justify-between relative cursor-pointer active:scale-95";
+        
+        card.innerHTML = `
+          <div class="flex items-center justify-between text-[11px] font-bold text-slate-400 mb-2">
+            <span class="bg-slate-100 text-slate-600 rounded-md px-1.5 py-0.5">#${index}</span>
+            <button 
+              onclick="event.stopPropagation(); toggleStar('${word.toLowerCase()}')" 
+              class="text-base transition hover:scale-125 ${isStarred ? 'text-amber-400' : 'text-slate-300 hover:text-amber-300'}"
+              title="Bookmark tricky word"
+            >
+              ★
+            </button>
+          </div>
+
+          <div class="my-1.5 text-center">
+            <div class="word-text text-base sm:text-lg font-bold text-brandNavy group-hover:text-brandMint transition ${hideSpellings ? 'filter blur-sm select-none' : ''}">
+              ${word}
+            </div>
+            ${hideSpellings ? '<div class="text-[10px] text-brandGoldDark font-bold">Tap to hear</div>' : ''}
+          </div>
+
+          <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-center gap-1.5 text-slate-400 group-hover:text-brandMint text-xs font-semibold">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.76l-4.14-3.313H2a1 1 0 01-1-1V7.553a1 1 0 011-1h2.243l4.14-3.313a1 1 0 011-.164zM14 6a1 1 0 011 1 6 6 0 010 6 1 1 0 11-1.414-1.414 4 4 0 000-3.172A1 1 0 0114 6z"/></svg>
+            <span>Listen</span>
+          </div>
+        `;
+
+        card.addEventListener('click', () => {
+          speak(word);
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    // Bookmark / Star function
+    function toggleStar(word) {
+      const lower = word.toLowerCase();
+      if (starredWords.has(lower)) {
+        starredWords.delete(lower);
+      } else {
+        starredWords.add(lower);
+      }
+      try {
+        localStorage.setItem('suffah_starred_words', JSON.stringify([...starredWords]));
+      } catch (e) {}
+      renderWordGrid();
+      updateFlashcardStarUI();
+    }
+
+    // Search and filter triggers
+    function handleSearch() {
+      const input = document.getElementById('searchInput');
+      searchQuery = input.value;
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (searchQuery.length > 0) {
+        clearBtn.classList.remove('hidden');
+        clearBtn.classList.add('flex');
+      } else {
+        clearBtn.classList.add('hidden');
+        clearBtn.classList.remove('flex');
+      }
+      renderWordGrid();
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      searchQuery = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      renderWordGrid();
+    }
+
+    function setFilter(filterType) {
+      currentFilter = filterType;
+      const allBtn = document.getElementById('filter-all');
+      const starBtn = document.getElementById('filter-starred');
+      
+      if (filterType === 'all') {
+        allBtn.className = "filter-btn text-xs font-bold px-3 py-1.5 rounded-lg bg-brandNavy text-white transition";
+        starBtn.className = "filter-btn text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center gap-1";
+      } else {
+        starBtn.className = "filter-btn text-xs font-bold px-3 py-1.5 rounded-lg bg-brandNavy text-white transition flex items-center gap-1";
+        allBtn.className = "filter-btn text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+      }
+      renderWordGrid();
+    }
+
+    // Toggle voice speed for young learners
+    function toggleVoiceSpeed() {
+      if (speechRate === 0.85) {
+        speechRate = 0.65;
+        document.getElementById('speedLabel').innerText = "Slow (0.6x)";
+      } else {
+        speechRate = 0.85;
+        document.getElementById('speedLabel').innerText = "Normal (0.9x)";
+      }
+    }
+
+    // Practice Mode: Blur/Mask words to test memory
+    function toggleMaskSpellings() {
+      hideSpellings = !hideSpellings;
+      const btn = document.getElementById('maskToggleBtn');
+      const icon = document.getElementById('maskIcon');
+      const label = document.getElementById('maskLabel');
+      
+      if (hideSpellings) {
+        icon.innerText = "👁️‍🗨️";
+        label.innerText = "Show Spellings";
+        btn.classList.add('bg-brandGold/30', 'border-brandGold');
+      } else {
+        icon.innerText = "👁️";
+        label.innerText = "Hide Spellings";
+        btn.classList.remove('bg-brandGold/30', 'border-brandGold');
+      }
+      renderWordGrid();
+    }
+
+    function updateFlashcardUI() {
+      if (flashcardList.length === 0) return;
+      const word = flashcardList[flashcardCurrentIndex];
+      const displayEl = document.getElementById('flashcardDisplay');
+      const hintEl = document.getElementById('flashcardHint');
+      const indexEl = document.getElementById('flashcardIndex');
+
+      indexEl.innerText = `Word ${flashcardCurrentIndex + 1} of ${flashcardList.length}`;
+      
+      if (flashcardIsRevealed) {
+        displayEl.innerText = word;
+        displayEl.classList.remove('filter', 'blur-md');
+        hintEl.classList.add('hidden');
+      } else {
+        displayEl.innerText = "???";
+        hintEl.classList.remove('hidden');
+      }
+
+      updateFlashcardStarUI();
+    }
+
+    function updateFlashcardStarUI() {
+      if (flashcardList.length === 0) return;
+      const word = flashcardList[flashcardCurrentIndex].toLowerCase();
+      const starBtn = document.getElementById('flashcardStarBtn');
+      if (starredWords.has(word)) {
+        starBtn.className = "text-xl hover:scale-125 transition text-amber-400";
+      } else {
+        starBtn.className = "text-xl hover:scale-125 transition text-slate-300 hover:text-amber-300";
+      }
+    }
+
+    function toggleStarCurrentFlashcard() {
+      if (flashcardList.length === 0) return;
+      const word = flashcardList[flashcardCurrentIndex];
+      toggleStar(word);
+      updateFlashcardStarUI();
+    }
+
+    function playFlashcardAudio() {
+      if (flashcardList.length === 0) return;
+      speak(flashcardList[flashcardCurrentIndex]);
+    }
+
+    function toggleFlashcardReveal() {
+      flashcardIsRevealed = !flashcardIsRevealed;
+      const btn = document.getElementById('flashcardRevealBtn');
+      if (flashcardIsRevealed) {
+        btn.innerText = "🙈 Hide Word (Test Yourself)";
+      } else {
+        btn.innerText = "👁️ Reveal Word";
+      }
+      updateFlashcardUI();
+    }
+
+    function nextFlashcard() {
+      if (flashcardCurrentIndex < flashcardList.length - 1) {
+        flashcardCurrentIndex++;
+      } else {
+        flashcardCurrentIndex = 0; // wrap around
+      }
+      updateFlashcardUI();
+      speak(flashcardList[flashcardCurrentIndex]);
+    }
+
+    function prevFlashcard() {
+      if (flashcardCurrentIndex > 0) {
+        flashcardCurrentIndex--;
+      } else {
+        flashcardCurrentIndex = flashcardList.length - 1;
+      }
+      updateFlashcardUI();
+      speak(flashcardList[flashcardCurrentIndex]);
+    }
+
+    function shuffleFlashcards() {
+      flashcardList = [...flashcardList].sort(() => Math.random() - 0.5);
+      flashcardCurrentIndex = 0;
+      updateFlashcardUI();
+      speak(flashcardList[flashcardCurrentIndex]);
+    }
+
+    function startQuiz(count) {
+      document.getElementById('quizIntroCard').classList.add('hidden');
+      document.getElementById('quizFinishedCard').classList.add('hidden');
+      document.getElementById('quizActiveCard').classList.remove('hidden');
+
+      // Prepare pool
+      let pool = [...WORDS_DATA].sort(() => Math.random() - 0.5);
+      if (count !== 'all') {
+        pool = pool.slice(0, count);
+      }
+      quizWordPool = pool;
+      quizCurrentIdx = 0;
+      quizScore = 0;
+
+      loadNextQuizQuestion();
+    }
+
+    function loadNextQuizQuestion() {
+      if (quizCurrentIdx >= quizWordPool.length) {
+        finishQuiz();
+        return;
+      }
+
+      currentQuizWord = quizWordPool[quizCurrentIdx];
+      
+      // UI updates
+      document.getElementById('quizProgressText').innerText = `Word ${quizCurrentIdx + 1} of ${quizWordPool.length}`;
+      document.getElementById('quizScoreText').innerText = `Score: ${quizScore}`;
+      
+      const percent = (quizCurrentIdx / quizWordPool.length) * 100;
+      document.getElementById('quizProgressBar').style.width = `${percent}%`;
+
+      const input = document.getElementById('quizInput');
+      input.value = '';
+      input.disabled = false;
+      input.className = "w-full text-center text-xl md:text-2xl font-bold py-3 px-4 rounded-xl border-2 border-slate-300 focus:outline-none focus:border-brandNavy focus:ring-4 focus:ring-brandNavy/10";
+      input.focus();
+
+      document.getElementById('quizFeedback').className = "hidden";
+      document.getElementById('quizHintDisplay').className = "hidden";
+      document.getElementById('quizSubmitBtn').innerText = "Check Spelling";
+      document.getElementById('quizSubmitBtn').onclick = submitQuizAnswer;
+
+      // Speak word after small delay
+      setTimeout(() => {
+        speak(currentQuizWord);
+      }, 300);
+    }
+
+    function playQuizWordAudio() {
+      if (currentQuizWord) {
+        speak(currentQuizWord);
+      }
+    }
+
+    function giveQuizHint() {
+      if (!currentQuizWord) return;
+      const hint = `First letter: "${currentQuizWord[0].toUpperCase()}", Length: ${currentQuizWord.length} letters`;
+      const hintEl = document.getElementById('quizHintDisplay');
+      hintEl.innerText = hint;
+      hintEl.classList.remove('hidden');
+    }
+
+    function submitQuizAnswer() {
+      const input = document.getElementById('quizInput');
+      const userSpelling = input.value.trim().toLowerCase();
+      const actualSpelling = currentQuizWord.toLowerCase();
+      const feedback = document.getElementById('quizFeedback');
+      const submitBtn = document.getElementById('quizSubmitBtn');
+
+      if (!userSpelling) {
+        input.focus();
+        return;
+      }
+
+      input.disabled = true;
+
+      if (userSpelling === actualSpelling) {
+        // Correct
+        quizScore++;
+        playBeep(true);
+        input.classList.add('border-green-500', 'bg-green-50', 'text-green-700');
+        feedback.innerText = `🎉 Excellent! Correct spelling: "${currentQuizWord}"`;
+        feedback.className = "rounded-xl p-3 text-sm font-bold bg-green-100 text-green-800 border border-green-200 block";
+        
+        // Confetti burst
+        confetti({
+          particleCount: 35,
+          spread: 60,
+          origin: { y: 0.7 }
+        });
+      } else {
+        // Incorrect
+        playBeep(false);
+        input.classList.add('border-red-400', 'bg-red-50', 'text-red-700');
+        feedback.innerText = `Keep trying! Correct was: "${currentQuizWord}"`;
+        feedback.className = "rounded-xl p-3 text-sm font-bold bg-red-100 text-red-800 border border-red-200 block";
+        // Auto-star words the child missed so they can practice them!
+        starredWords.add(actualSpelling);
+        try {
+          localStorage.setItem('suffah_starred_words', JSON.stringify([...starredWords]));
+        } catch(e) {}
+      }
+
+      document.getElementById('quizScoreText').innerText = `Score: ${quizScore}`;
+
+      // Change button to Continue
+      submitBtn.innerText = "Next Word →";
+      submitBtn.onclick = () => {
+        quizCurrentIdx++;
+        loadNextQuizQuestion();
+      };
+      submitBtn.focus();
+    }
+
+    function finishQuiz() {
+      document.getElementById('quizActiveCard').classList.add('hidden');
+      const finishCard = document.getElementById('quizFinishedCard');
+      finishCard.classList.remove('hidden');
+
+      document.getElementById('finalScoreDisplay').innerText = `${quizScore} / ${quizWordPool.length}`;
+      
+      const ratio = quizScore / quizWordPool.length;
+      const cheerEl = document.getElementById('feedbackCheer');
+      
+      if (ratio === 1) {
+        cheerEl.innerText = "🏆 Perfect Score! Gold Medalist!";
+        confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
+      } else if (ratio >= 0.7) {
+        cheerEl.innerText = "🌟 Great Job! Almost Ready for the Trophy!";
+        confetti({ particleCount: 50, spread: 60 });
+      } else {
+        cheerEl.innerText = "💪 Good Practice! Review your Starred Words & Try Again!";
+      }
+
+      renderWordGrid();
+    }
+
+    function switchTab(tab) {
+      const views = ['list', 'flashcard', 'quiz'];
+      views.forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('hidden');
+        const btn = document.getElementById(`tab-${v}`);
+        btn.className = "tab-btn px-4 py-2.5 rounded-xl font-semibold text-sm transition-all flex items-center gap-2 bg-white text-slate-700 hover:bg-slate-100 border border-slate-200";
+      });
+
+      document.getElementById(`view-${tab}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-${tab}`);
+      activeBtn.className = "tab-btn px-4 py-2.5 rounded-xl font-bold text-sm shadow-sm transition-all flex items-center gap-2 bg-brandNavy text-white shadow-brandNavy/20";
+
+      if (tab === 'flashcard') {
+        updateFlashcardUI();
+        speak(flashcardList[flashcardCurrentIndex]);
+      }
+    }
+
+    // Initialize application on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderWordGrid();
+      // Ensure speech synthesis voices load
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = () => {
+          // Prewarm voice list
+          window.speechSynthesis.getVoices();
+        };
+      }
+    });
+  </script>
+
+</body>
+</html>
