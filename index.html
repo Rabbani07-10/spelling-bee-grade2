@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spelling Bee 2026–2027 | Grade II - Suffah Intellectual Schools</title>
   
-  <!-- Old English Text Font + Modern UI fonts -->
-  <link href="https://fonts.cdnfonts.com/css/old-english-text-mt" rel="stylesheet">
+  <!-- Exact Dieter Steffmann Olde English Webfont + Modern UI fonts -->
+  <link href="https://fonts.cdnfonts.com/css/olde-english" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -98,15 +98,15 @@
       display: block;
     }
 
-    /* Old English Title Styling */
+    /* Authentic Olde English Title */
     .brand-meta h1 {
-      font-family: 'Old English Text MT', 'Engravers Old English BT', 'Grenze Gotisch', cursive, serif;
-      font-size: 2.2rem;
+      font-family: 'Olde English', 'Old English Text MT', serif;
+      font-size: 2.35rem;
       font-weight: normal;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
       color: #ffffff;
-      line-height: 1.2;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+      line-height: 1.25;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
     }
 
     .brand-meta .tagline {
@@ -119,24 +119,16 @@
       margin-top: 4px;
     }
 
-    .meta-pills-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
     .competition-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(8px);
-      padding: 6px 16px;
+      padding: 6px 18px;
       border-radius: 50px;
       border: 1px solid rgba(255, 255, 255, 0.2);
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: #ffffff;
     }
@@ -148,19 +140,6 @@
       border-radius: 12px;
       font-weight: 800;
       font-size: 0.78rem;
-    }
-
-    .accent-indicator {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 6px 14px;
-      border-radius: 50px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: #ffffff;
     }
 
     /* Main Container */
@@ -444,7 +423,7 @@
         gap: 10px;
       }
       .brand-meta h1 {
-        font-size: 1.65rem;
+        font-size: 1.75rem;
       }
       .logo-container {
         width: 60px;
@@ -472,7 +451,7 @@
       <a href="https://www.suffah.edu.pk/" target="_blank" rel="noopener noreferrer" class="brand-group" title="Visit Suffah Intellectual School Official Website">
         <div class="logo-container">
           <!-- PASTE YOUR LOGO URL IN THE SRC ATTRIBUTE BELOW -->
-          <img src="https://www.suffah.edu.pk/images/logo-new.png" alt="Suffah Intellectual School Logo" id="school-logo" />
+          <img src="PASTE_YOUR_LOGO_URL_HERE" alt="Suffah Intellectual School Logo" id="school-logo" />
         </div>
         <div class="brand-meta">
           <h1>Suffah Intellectual School</h1>
@@ -480,14 +459,9 @@
         </div>
       </a>
 
-      <div class="meta-pills-row">
-        <div class="competition-pill">
-          <span>Spelling Bee Competition 2026–2027</span>
-          <span class="badge-gold">Grade II</span>
-        </div>
-        <div class="accent-indicator" title="Audio pronunciation is locked to authentic British English">
-          <span>🇬🇧 British Accent</span>
-        </div>
+      <div class="competition-pill">
+        <span>Spelling Bee Competition 2026–2027</span>
+        <span class="badge-gold">Grade II</span>
       </div>
     </div>
   </header>
@@ -557,10 +531,9 @@
       if (!('speechSynthesis' in window)) return;
       const voices = window.speechSynthesis.getVoices();
       
-      // Look specifically for British voices across iOS, Android, macOS, and Windows
       britishVoice = voices.find(v => 
         (v.lang === 'en-GB' || v.lang === 'en_GB') && 
-        (v.name.includes('United Kingdom') || v.name.includes('British') || v.name.includes('UK') || v.name.includes('Oliver') || v.name.includes('George') || v.name.includes('Serena') || v.name.includes('Daniel'))
+        (v.name.includes('United Kingdom') || v.name.includes('British') || v.name.includes('UK') || v.name.includes('Oliver') || v.name.includes('George') || v.name.includes('Serena') || v.name.includes('Daniel') || v.name.includes('English United Kingdom'))
       ) || voices.find(v => v.lang === 'en-GB' || v.lang === 'en_GB') 
         || voices.find(v => v.lang.startsWith('en'));
     }
